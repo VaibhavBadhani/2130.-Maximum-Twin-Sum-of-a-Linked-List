@@ -40,3 +40,45 @@ public:
         return ans;
     }
 };
+///////////////////////////////java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public int pairSum(ListNode head) {
+        int n =0;
+        ListNode ptr = head;
+        //length
+        while(ptr!=null)
+        {
+            n++;
+            ptr=ptr.next;
+        }
+        int i =0;
+        int []s=new int[n/2];
+        int ans = -999;
+        ptr=head;
+        while(ptr!=null)
+        {
+            if(i<n/2)
+            {
+                s[i]=ptr.val;
+            }
+            else
+            {
+                s[n-i-1] += ptr.val;
+                ans= Math.max(ans,s[n-i-1]);
+            }
+            i++;
+            ptr=ptr.next;
+        }
+        return ans;
+    }
+}
